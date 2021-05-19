@@ -1,9 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.colors import LogNorm
-import os
 from astropy.io import fits
-import pandas as pd
 import scipy
 from scipy.optimize import curve_fit
 
@@ -13,13 +10,11 @@ plt.close('all')
 def voight(X,mu,s,g,N,a):
     x  = X - mu
     return scipy.special.voigt_profile(x,s,g)*N+a
-    #return N/(s*np.sqrt(2*np.pi)) * np.exp(-(x)**2/(2*s**2))+a
-def wmean(x,sx,axis=None):
+def wmean(x,sx,axis=None):#Weighted mean
     w = 1/sx**2
     m = np.sum(x*w,axis=axis)/np.sum(w,axis=axis)
     sm = 1/(np.sqrt(np.sum(w,axis=axis)))
     return m,sm
-
 
 
 w = [3518.497314453125]
@@ -29,16 +24,11 @@ w = np.array(w)
 
 file = fits.open('flux_obj.ms_1d.fits')
 fitsdata = file[0].data[:,0]
-
 F = fitsdata[0]
 Fr = fitsdata[3]
 
 
-
-
-
-
-def fit(mu=7254):
+def fit(mu=7254):#Fit voight profile, return wavelength range of fit, fit, fit coefficients and uncertainty of coefficients
     guess = (mu,10,0,2e-14,1e-17)
     s1 = (w>guess[0]-40) & (w<guess[0]+40) 
     ws = w[s1]
@@ -50,9 +40,9 @@ def fit(mu=7254):
 
 #             H-gamma   H-beta  OIII   OIII   H-alpha
 Llabel = [r'H$\gamma$',r'H$\beta$','[OIII]','[OIII]',r'H$\alpha$']
-L0 = np.array([4341.684,4862.683,4960.295,5008.240,6564.614])
+L0 = np.array([4341.684,4862.683,4960.295,5008.240,6564.614]) #Vaccum wavelengths
 
-cen = np.array([4781,5357,5463,5516,7254])
+cen = np.array([4781,5357,5463,5516,7254]) #Estimated peaks
 
 
 
@@ -96,17 +86,9 @@ z = AB/L0-1
 zr = ABr/L0
 
 Z,Zr = wmean(z,zr)
-#print(AB,ABr)
-#print(Z,Zr)
-#metal poor primite object late SFR starter
 
 
-obs = [r'\SI{%.6g(%.1g)}{\angstrom}'%(AB[i],ABr[i]) for i in range(len(AB))]
-vac = [r'\SI{%.10g}{\angstrom}'%i for i in L0]
-redshift = ['\SI{%.8g(%.6g)}{}'%(z[i],zr[i]) for i in range(len(z))]
-
-
-
+print(Z,Zr)
 
 
 
