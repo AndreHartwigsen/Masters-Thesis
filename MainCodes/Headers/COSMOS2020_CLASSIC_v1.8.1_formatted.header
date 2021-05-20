@@ -1,0 +1,284 @@
+
+01/2020
+
+The CLASSIC COSMOS2020 photometric catalog
+
+We present here the catalog containing the photometry extracted with SExtractor and IRACLEAN, 
+for about 1,700,000 sources in the COSMOS field. The photometry from high-resolution was extracted
+from PSF-homogenized images, with a target PSF set to a Moffat profile with parameters (0.8",2.5).
+The full description of this catalog is in Weaver et al. in prep.
+
+contact: olivier.kauffmann@lam.fr
+
+########################################################
+Identification
+########################################################
+
+Identifier
+#   name = 'ID'
+
+Right Ascension and Declination
+#   name = 'ALPHA_J2000'; unit = 'deg'
+#   name = 'DELTA_J2000'; unit = 'deg'
+
+Position
+#   name = 'X_IMAGE'; unit = 'pixel'
+#   name = 'Y_IMAGE'; unit = 'pixel'
+#   name = 'ERRX2_IMAGE'; unit = 'pixel'
+#   name = 'ERRY2_IMAGE'; unit = 'pixel'
+#   name = 'ERRXY_IMAGE'; unit = 'pixel'
+
+Shape from the Ks band image
+#   name = 'FLUX_RADIUS'; unit = 'pixel'
+#   name = 'KRON_RADIUS'
+
+########################################################
+Flags
+########################################################
+
+Flag for the bright stars and edges of the HSC images
+#   name = 'FLAG_HSC'      (0:clean, 1:masked)
+
+Flag for the bright stars and edges of the Suprime-Cam images
+#   name = 'FLAG_SUPCAM'   (0:clean, 1:masked)
+
+Flag for the UltraVISTA region
+#   name = 'FLAG_UVISTA'   (0:inside, 1:outside)
+
+Flag for the UltraVISTA ultra-deep regions
+#   name = 'FLAG_UDEEP'    (0:ultra-deep, 1:deep)
+
+Flag for the combination of FLAG_UVISTA, FLAG_HSC and FLAG_SUPCAM
+#   name = 'FLAG_COMBINED' (0:clean and inside UVISTA)
+
+########################################################
+Galactic extinction at the object position
+########################################################
+
+E(B-V) values from Schlegel, Finkbeiner & Davis (1998) dust map
+By default, a scaling of 0.86 is applied to the map values 
+to reflect the recalibration by Schlafly & Finkbeiner (2011)
+
+#   name = 'EBV'; unit = 'mag'
+
+########################################################
+Photometry
+########################################################
+
+No data convention
+flux, fluxerr, mag, magerr = -99
+
+Negative flux convention
+mag, magerr = -99
+
+The photometry is not corrected for Milky Way extinction.
+The aperture photometry errors are corrected for the correlated noise in the images.
+
+########################################################
+
+List of bands
+CFHT/MegaCam (CLAUDS): 
+  CFHT_ustar, CFHT_u
+Subaru/Hyper Suprime-Cam (HSC SSP DR2): 
+  HSC_g, HSC_r, HSC_i, HSC_z, HSC_y
+VISTA/VIRCAM (UltraVISTA DR4): 
+  UVISTA_Y, UVISTA_J, UVISTA_H, UVISTA_Ks, UVISTA_NB118
+Subaru/Suprime-Cam: 
+  SC_IB427, SC_IB464, SC_IA484, SC_IB505, SC_IA527, SC_IB574, SC_IA624, 
+  SC_IA679, SC_IB709, SC_IA738, SC_IA767, SC_IB827, SC_NB711, SC_NB816, 
+  SC_B, SC_V, SC_gp, SC_rp, SC_ip, SC_zp, SC_zpp
+
+2" diameter aperture fluxes, flux errors, magnitudes and magnitude errors
+#   name = '###_FLUX_APER2';    unit = 'uJy'
+#   name = '###_FLUXERR_APER2'; unit = 'uJy'
+#   name = '###_MAG_APER2';    unit = 'mag'
+#   name = '###_MAGERR_APER2'; unit = 'mag'
+
+3" diameter aperture fluxes, flux errors, magnitudes and magnitude errors
+#   name = '###_FLUX_APER3';    unit = 'uJy'
+#   name = '###_FLUXERR_APER3'; unit = 'uJy'
+#   name = '###_MAG_APER3';    unit = 'mag'
+#   name = '###_MAGERR_APER3'; unit = 'mag'
+
+Kron aperture fluxes, flux errors, magnitudes and magnitude errors
+#   name = '###_FLUX_AUTO';    unit = 'uJy'
+#   name = '###_FLUXERR_AUTO'; unit = 'uJy'
+#   name = '###_MAG_AUTO';    unit = 'mag'
+#   name = '###_MAGERR_AUTO'; unit = 'mag'
+
+Isophotal magnitudes and magnitude errors
+#   name = '###_MAG_ISO';    unit = 'mag'
+#   name = '###_MAGERR_ISO'; unit = 'mag'
+
+########################################################
+
+Internal flags from SExtractor
+#   name = '###_FLAGS'
+
+Combined interval and external flags from SExtractor and flag images (combined with arithmetical OR)
+#   name = '###_IMAFLAGS_ISO'
+
+  1   The object has neighbours, bright and close enough to significantly bias the 
+      MAG_AUTO photometry, or bad pixels (more than 10% of the integrated area affected), 
+  2   The object was originally blended with another one, 
+  4   At least one pixel of the object is saturated (or very close to), 
+  8   The object is truncated (too close to an image boundary),
+  16  Object's aperture data are incomplete or corrupted,
+  32  Object's isophotal data are incomplete or corrupted,
+  64  A memory overflow occurred during deblending,
+  128 A memory overflow occurred during extraction.
+
+########################################################
+
+Aperture-to-total magnitude corrections for 2" and 3" diameter aperture photometry, respectively
+To be added to ###_MAG_APER# to get total magnitudes
+#   name = 'total_off2'; unit = 'mag'
+#   name = 'total_off3'; unit = 'mag'
+
+########################################################
+
+List of bands
+Spitzer/IRAC (Cosmic DAWN Survey): 
+  IRAC_CH1, IRAC_CH2
+
+IRACLEAN fluxes, flux errors, magnitudes and magnitude errors
+#   name = '###_FLUX';    unit = 'uJy'
+#   name = '###_FLUXERR'; unit = 'uJy'
+#   name = '###_MAG';    unit = 'mag'
+#   name = '###_MAGERR'; unit = 'mag'
+
+####################################################
+Ancillary photometry
+####################################################
+
+SPLASH photometry from the COSMOS2015 catalog (Laigle et al. 2016)
+
+Matched identifier
+#   name = 'ID_2015'
+
+List of bands
+  SPLASH_CH1, SPLASH_CH2, SPLASH_CH3, SPLASH_CH4
+
+#   name = '###_FLUX';    unit = 'uJy'
+#   name = '###_FLUXERR'; unit = 'uJy'
+#   name = '###_MAG';    unit = 'mag'
+#   name = '###_MAGERR'; unit = 'mag'
+
+####################################################
+
+GALEX photometry (Zamojski et al. 2007) from the Capak et al. 2007 catalog
+
+Matched identifier
+#   name = 'ID_GALEX'
+
+List of bands
+  GALEX_NUV, GALEX_FUV
+
+#   name = '###_FLUX';    unit = 'uJy'
+#   name = '###_FLUXERR'; unit = 'uJy'
+#   name = '###_MAG';    unit = 'mag'
+#   name = '###_MAGERR'; unit = 'mag'
+
+####################################################
+
+COSMOS Super-Deblended catalog (Jin et al. 2018)
+selection: goodArea == 1
+
+Matched identifier
+#   name = 'ID_FIR'
+
+List of bands
+  FIR_24, FIR_100, FIR_160, FIR_250, FIR_350, FIR_500
+
+#   name = '###_FLUX';    unit = 'uJy'
+#   name = '###_FLUXERR'; unit = 'uJy'
+
+####################################################
+
+Leauthaud et al. 2006 catalog
+selection: CLEAN == 1
+
+Matched identifier
+#   name = 'ID_ACS'
+
+ACS photometry
+#   name = 'ACS_F814W_FLUX';    unit = 'uJy'
+#   name = 'ACS_F814W_FLUXERR'; unit = 'uJy'
+#   name = 'ACS_F814W_MAG';    unit = 'mag'
+#   name = 'ACS_F814W_MAGERR'; unit = 'mag'
+
+ACS morphology
+#   name = 'ACS_A_WORLD'; unit = 'deg'
+#   name = 'ACS_B_WORLD'; unit = 'deg'
+#   name = 'ACS_THETA_WORLD'; unit = 'deg'
+#   name = 'ACS_FWHM_WORLD'; unit = 'deg'
+#   name = 'ACS_MU_MAX'; unit = 'mag'
+#   name = 'ACS_MU_CLASS'
+
+####################################################
+
+Chandra COSMOS-Legacy Survey (Civano et al. 2016, Marchesi et al. 2016)
+
+Matched identifier
+#   name = 'ID_CHANDRA'
+
+####################################################
+Python code
+####################################################
+
+Here is a piece of python code to extract the photometry,
+correct for the aperture-to-total offset and the 
+Milky Way extinction.
+
+####################################################
+
+import numpy as np
+from astropy.io import fits
+
+filename = '/n07data/hjmcc/exchg/COSMOS2020/PHOTOMETRY/COSMOS2020_CLASSIC_v1.5_formatted.fits'
+with fits.open(filename) as f:
+    data = f[1].data
+
+filtnames = ['CFHT_ustar', 'CFHT_u', 'HSC_g', 'HSC_r', 'HSC_i', 'HSC_z', 'HSC_y', 'UVISTA_Y', 'UVISTA_J', 'UVISTA_H', 'UVISTA_Ks', 'SC_IB427', 'SC_IB464', 'SC_IA484', 'SC_IB505', 'SC_IA527', 'SC_IB574', 'SC_IA624', 'SC_IA679', 'SC_IB709', 'SC_IA738', 'SC_IA767', 'SC_IB827', 'SC_NB711', 'SC_NB816', 'UVISTA_NB118', 'SC_B', 'SC_V', 'SC_rp', 'SC_ip', 'SC_zpp', 'IRAC_CH1', 'IRAC_CH2', 'GALEX_FUV', 'GALEX_NUV']
+AlambdaDivEBV = [4.674, 4.807, 3.69, 2.715, 2.0, 1.515, 1.298, 1.213, 0.874, 0.565, 0.365, 4.261, 3.844, 3.622, 3.425, 3.265, 2.938, 2.694, 2.431, 2.29, 2.151, 1.997, 1.748, 2.268, 1.787, 0.946, 4.041, 3.128, 2.673, 2.003, 1.466, 0.163, 0.112, 8.31, 8.742]
+
+aperture = 2 # ["]
+offset = data['total_off'+str(aperture)]
+ebv    = data['EBV']
+names_noaper = ['IRAC_CH1', 'IRAC_CH2', 'GALEX_FUV', 'GALEX_NUV']
+
+for i,name in enumerate(filtnames):
+    if name not in names_noaper:
+        str_flux     = name+'_FLUX_APER'   +str(aperture)
+        str_flux_err = name+'_FLUXERR_APER'+str(aperture)
+        str_mag      = name+'_MAG_APER'    +str(aperture)
+        str_mag_err  = name+'_MAGERR_APER' +str(aperture)
+    else:
+        str_flux     = name+'_FLUX'
+        str_flux_err = name+'_FLUXERR'
+        str_mag      = name+'_MAG'
+        str_mag_err  = name+'_MAGERR'    
+    flux     = data[str_flux]
+    flux_err = data[str_flux_err]
+    mag      = data[str_mag]
+    mag_err  = data[str_mag_err]    
+
+    # apply aperture-to-total offset
+    if name not in names_noaper:
+        idx = (flux>0)
+        flux[idx]     *= 10**(-0.4*offset[idx])
+        flux_err[idx] *= 10**(-0.4*offset[idx])
+        mag[idx]      += offset[idx]    
+
+    # correct for Milky Way attenuation
+    idx = (flux>0)
+    atten = 10**(0.4*AlambdaDivEBV[i]*ebv[idx])
+    flux[idx]     *= atten
+    flux_err[idx] *= atten
+    mag[idx]      += -2.5*np.log10(atten)    
+
+    data[str_flux]     = flux
+    data[str_flux_err] = flux_err
+    data[str_mag]      = mag
+    data[str_mag_err]  = mag_err
+

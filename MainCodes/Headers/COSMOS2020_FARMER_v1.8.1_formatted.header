@@ -1,0 +1,195 @@
+
+01/2020
+
+The Farmer COSMOS2020 photometric catalog
+
+We present here the catalog containing the photometry detected with SEP on a izYJHKs CHI-MEAN image
+and extracted with The Tractor for about 900,000 sources in the COSMOS field within the areas of 
+UltraVISTA and outside the HSC bright star haloes. Suitable models are determined with izYJHKs imaging
+for all detected sources, convolved with the psf of a given band and optimised to measure flux 
+which is treated as a free parameter. 
+
+The full description of this catalog is in Weaver et al. in prep.
+
+contact: john.weaver.astro@gmail.com
+
+########################################################
+History
+########################################################
+01/2020 -- Minor typo, consistency fixes
+
+12/2020 -- incremental internal team release
+* Missing 350arcmin2 completed
+* Removed IRAC_3, IRAC_4, and UVISTA_NB118 due to incomplete measurements
+* Minor adjustment to MAGERR values to avoid approximation
+
+09/2020 -- preliminary internal team release
+
+########################################################
+Identification
+########################################################
+
+Identifier
+#   name = 'ID'
+
+Right Ascension and Declination
+#   name = 'ALPHA_J2000'; unit = 'deg'
+#   name = 'DELTA_J2000'; unit = 'deg'
+
+Position, as determined by model centroid (preferred)
+#   name = 'X_MODEL'; unit = 'pixel'
+#   name = 'Y_MODEL'; unit = 'pixel'
+#   name = 'ERRX_MODEL'; unit = 'pixel'
+#   name = 'ERRY_MODEL'; unit = 'pixel'
+
+Model shape information will be provided in a future release.
+
+Farmer internal source identifier
+#   name = 'FARMER_ID'
+
+Position, as determined by SEP at detection, in J2000
+#   name = 'ALPHA_DETECTION'; unit = 'deg'
+#   name = 'DEC_DETECTION'; unit = 'deg'
+
+Farmer group occupation number
+#   name = 'N_GROUP'
+
+########################################################
+Flags
+########################################################
+
+Flag for the bright stars and edges of the HSC images
+#   name = 'FLAG_HSC'      (0:clean, 1:masked)
+
+Flag for the bright stars and edges of the Suprime-Cam images
+#   name = 'FLAG_SUPCAM'   (0:clean, 1:masked)
+
+Flag for the UltraVISTA region
+#   name = 'FLAG_UVISTA'   (0:inside, 1:outside)
+
+Flag for the UltraVISTA ultra-deep regions
+#   name = 'FLAG_UDEEP'    (0:ultra-deep, 1:deep)
+
+Flag for the combination of FLAG_UVISTA, FLAG_HSC and FLAG_SUPCAM
+#   name = 'FLAG_COMBINED' (0:clean and inside UVISTA)
+
+########################################################
+Galactic extinction at the object position
+########################################################
+
+E(B-V) values from Schlegel, Finkbeiner & Davis (1998) dust map
+By default, a scaling of 0.86 is applied to the map values 
+to reflect the recalibration by Schlafly & Finkbeiner (2011)
+
+#   name = 'EBV'; unit = 'mag'
+
+########################################################
+Photometry
+########################################################
+
+No data convention
+flux, fluxerr, mag, magerr = -99
+
+Negative flux convention
+flux, fluxerr, mag, magerr = -99
+
+########################################################
+
+List of bands
+CFHT/MegaCam (CLAUDS): ustar, u
+Subaru/HSC: g, r, i, z, y
+VISTA/VIRCAM (UltraVISTA DR4): Y, J, H, Ks
+Subaru/Suprime-Cam: IB427, IB464, IA484, IB505, IA527, IB574, IA624, IA679, IB709, IA738,
+                    IA767, IB827, NB711, NB816
+Sptizer/IRAC (Cosmic DAWN Survey): IRAC_1, IRAC_2, 
+
+Not in this release: NB118, B_SC, V_SC, r_SC, ip_SC, zpp_SC, IRAC_3, IRAC_4
+
+Total model fluxes, flux errors, magnitudes and magnitude errors
+#   name = '###_FLUX';    unit = 'uJy'
+#   name = '###_FLUXERR'; unit = 'uJy'
+#   name = '###_MAG';    unit = 'mag'
+#   name = '###_MAGERR'; unit = 'mag'
+
+Aperture corrections should not be applied.
+
+########################################################
+
+Chi2 goodness of fit statistic
+#   name = '###_CHISQ'
+
+
+####################################################
+Ancillary photometry
+####################################################
+
+SPLASH photometry from the COSMOS2015 catalog (Laigle et al. 2016)
+
+Matched identifier
+#   name = 'ID_C2015'
+
+List of bands
+Spitzer/IRAC (SPLASH): SPLASH_1, SPLASH_2, SPLASH_3, SPLASH_4
+
+#   name = 'SPLASH_#_FLUX';    unit = 'uJy'
+#   name = 'SPLASH_#_FLUXERR'; unit = 'uJy'
+#   name = 'SPLASH_#_MAG';    unit = 'mag'
+#   name = 'SPLASH_#_MAGERR'; unit = 'mag'
+
+####################################################
+
+GALEX photometry (Zamojski et al. 2007) from the Capak et al. 2007 catalog
+
+Matched identifier
+#   name = 'ID_GALEX'
+
+List of bands
+GALEX: NUV, FUV
+
+#   name = '#UV_FLUX';    unit = 'uJy'
+#   name = '#UV_FLUXERR'; unit = 'uJy'
+#   name = '#UV_MAG';    unit = 'mag'
+#   name = '#UV_MAGERR'; unit = 'mag'
+
+####################################################
+
+COSMOS Super-Deblended catalog (Jin et al. 2018)
+selection: goodArea == 1
+
+Matched identifier
+#   name = 'ID_FIR'
+
+List of bands
+24, 100, 160, 250, 350, 500, 850, 1100, 10CM, 20CM
+
+#   name = 'FIR_###_FLUX';    unit = 'uJy'
+#   name = 'FIR_###_FLUXERR'; unit = 'uJy'
+
+####################################################
+
+HST/ACS morphology catalog (Leauthaud et al. 2006)
+selection: CLEAN == 1
+
+Matched identifier
+#   name = 'ID_ACS'
+
+ACS photometry
+#   name = '814W_FLUX'; unit = 'uJy'
+#   name = '814W_FLUXERR'; unit = 'uJy'
+#   name = '814W_MAG'; unit = 'mag'
+#   name = '814W_MAGERR'; unit = 'mag'
+
+ACS morphology
+#   name = 'ACS_A_WORLD'; unit = 'deg'
+#   name = 'ACS_B_WORLD'; unit = 'deg'
+#   name = 'ACS_THETA_WORLD'; unit = 'deg'
+#   name = 'ACS_FWHM_WORLD'; unit = 'deg'
+#   name = 'ACS_MU_MAX'; unit = 'mag'
+#   name = 'ACS_MU_CLASS'
+
+####################################################
+
+Chandra X-ray catalog (Civano et al. 2016)
+
+Matched identifier
+#   name = 'ID_CHANDRA'

@@ -1,0 +1,129 @@
+############################################
+### COSMOS 2020
+### 20 Dec. 2020
+### Photo-z computed with Le Phare
+### Classic photometric catalogue ; 1720700 sources
+### The corresponding PDF are available in photoz_cosmos2020_lephare_classic_v1.pdz.fits.gz
+
+### Update:
+###   * Add a missing template when computing physical parameters
+
+
+####################################################
+# OBJECT IDENTIFICATION from O. Kauffmann classic photometric catalogue
+####################################################
+
+#  1    Id             
+#  2    alpha          J2000, in deg
+#  3    delta          J2000, in deg
+
+
+####################################################
+# Le Phare PHOTOMETRIC REDSHIFTS
+# Derived using a method similar to Ilbert et al. (2009, 2013)
+####################################################
+
+
+#  4    zBEST          z= zPDF  if galaxy  (column 7, median of the likelihood distribution)
+#                      z= 0     if star
+#                      z= 99.9  if Xray source based on Chandra (Civiano program)
+#                      z= -99   if masked area (combining HSC, Suprimecam, UltraVISTA masks)
+
+#  5    type           Given even in masked regions (useful for people who want to use objects with photo-z=-99
+#                      type=0   if galaxy
+#                      type=1   if star (mainly 3.6 micron, and half-light radius in HSC and HST)
+#                      type=2   if Xray source
+#                      type=-9  if failure in the fit (most of these objects have less than 1 band)
+
+
+
+##########################
+#  Best fit obtained with the galaxy templates
+#
+#  warning: every source has a redshift, regardless of the type or if it is in a masked area or not
+#
+
+#  6     zPDF           photo-z measured using the galaxy templates. Median of the likelihood distribution.
+#  7     zPDF_l68       lower limit, 68% confidence level 
+#  8     zPDF_u68       upper limit, 68% confidence level 
+
+#  9     zMinChi2       photo-z measured using the galaxy templates. Photo-z defines as the minimum of the chi2 distribution.
+#  10    chi2_best      reduced chi2 (-99 if less than 3 filters) for zMinChi2
+
+#  11    zp_2           second photo-z solution if a second peak is detected with P>5% in the PDF
+#  12    chi2_2         reduced chi2 for the second photo-z solution
+
+#  13    NbFilt         Number of filters used in the fit
+
+
+##########################
+# Best fit obtained with the AGN templates
+#
+# !!!! Warning: this value is only informative: no correction for variability is applied. 
+#
+# 14    zq             photoz for the AGN library.  
+# 15    chiq           reduced chi2 
+# 16    modq           best fit template
+
+
+##########################
+# Best fit obtained with the STAR templates 
+#
+# 17    mods           model for the star library
+# 18    chis           reduced chi2
+
+###########################
+# mask
+# 19 maskUVISTA
+# 20 maskHSC
+# 21 maskSCAM
+# 22 mask
+
+####################################################
+# PHYSICAL PROPERTIES 
+# derived from the BC03 best-fit templates at zPDF (Chabrier IMF; cosmo:70,0.3,0.7; BC03 tau+delayed models described in Ilbert et al. 2015).
+# A value is computed for all sources, even the one in masked area or classified as star
+####################################################
+
+# Best fit BC03 model at zPDF
+# 23    model
+# 24    age
+# 25    dust E(B-V)
+# 26    Attenuation law
+
+# Absolute magnitudes
+# 27    MFUV                 FUV galex  
+# 28    MNUV                 NUV galex
+# 29    MU                   U  cfht new
+# 30    MG                   g  Subaru HSC
+# 31    MR                   r  Subaru HSC    
+# 32    MI                   i  Subaru HSC 
+# 33    MZ                   z  Subaru HSC  
+# 34    MY                   VISTA 
+# 35    MJ                   VISTA 
+# 36    MH                   VISTA
+# 37    MK                   VISTA
+
+
+# Mass
+# 38    mass_med           log Stellar mass from BC03 best-fit template. median of the PDF 
+# 39    mass_med_min68     lower limit, 68% confidence level
+# 40    mass_med_max68     upper limit, 68% confidence level
+# 41    mass_best          log Stellar mass from BC03 best-fit template. Taken at the minimum chi2
+
+# SFR  !Warning: computed without IR, large uncertainties with such methods
+# 42    SFR_med            log SFR from BC03 best-fit template. median of the PDF 
+# 43    SFR_med_min68      lower limit, 68% confidence level
+# 44    SFR_med_max68      upper limit, 68% confidence level
+# 45    SFR_best           log SFR from BC03 best-fit template. Taken at the minimum chi2
+
+# sSFR  !Warning: computed without IR, large uncertainties with such methods
+# 46    sSFR_med            log sSFR from BC03 best-fit template. median of the PDF 
+# 47    sSFR_med_min68      lower limit, 68% confidence level
+# 48    sSFR_med_max68      upper limit, 68% confidence level
+# 49    sSFR_best           log sSFR from BC03 best-fit template. Taken at the minimum chi2
+
+# Luminosities, corrected from internal dust attenuation
+# 50    L_nu               log(luminosity in erg/s/Hz) in NUV filter
+# 51    L_r                log(luminosity in erg/s/Hz) in r filter
+# 52    L_k                log(luminosity in erg/s/Hz) in K filter
